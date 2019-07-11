@@ -24,7 +24,7 @@ namespace GPR5100_S2
 
         // Menüleiste
         // File
-        // File->New => Grid geleert werden
+        // File->New => Grid geleert werden - Done -
         // File->Save => SaveFileDialog
         // File->Load => OpenFileDialog
         // Toolbox hinzufügen (Empfehle StackPanel mit Images)
@@ -52,9 +52,9 @@ namespace GPR5100_S2
                 sceneGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 sceneGrid.RowDefinitions.Add(new RowDefinition());
             }
-            
-            for(int x = 0; x < 10; ++x)
-                for(int y = 0; y < 10; ++y)
+
+            for (int x = 0; x < 10; ++x)
+                for (int y = 0; y < 10; ++y)
                 {
                     Image image = new Image();
                     image.Source = bitmapSources.First();
@@ -77,7 +77,7 @@ namespace GPR5100_S2
             List<BitmapSource> bitmapImages = new List<BitmapSource>();
 
             // alle jpegs durchgehen
-            foreach(string file in Directory.GetFiles("./images", "*.jpg"))
+            foreach (string file in Directory.GetFiles("./images", "*.jpg"))
             {
                 // die datei zum laden
                 using (var stream = File.OpenRead(file))
@@ -87,8 +87,20 @@ namespace GPR5100_S2
                     bitmapImages.Add(decoder.Frames.First());
                 }
             }
-
             return bitmapImages;
+        }
+
+        /// <summary>
+        /// New Button Function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenNew_Click(object sender, RoutedEventArgs e)
+        {
+            // clear Images in Grid
+            sceneGrid.Children.Clear();
+
+            stbAction.Content = "Das Grid wurde geleert.";
         }
     }
 }
