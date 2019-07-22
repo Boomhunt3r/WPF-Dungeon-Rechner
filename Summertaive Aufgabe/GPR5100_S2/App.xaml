@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:GPR5100_S2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BitmapImage x:Key="stoneImage" UriSource="C:\Users\Jannek\Documents\WPF-Dungeon-Rechner\Summertaive Aufgabe\Editor\Images/Stone.png"/>
+        <ImageBrush x:Key="stoneImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource stoneImage}}"/>
+
+        <BitmapImage x:Key="woodImage" UriSource="C:\Users\Jannek\Documents\WPF-Dungeon-Rechner\Summertaive Aufgabe\Editor\Images/Wood.png"/>
+        <ImageBrush x:Key="woodImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource woodImage}}"/>
     </Application.Resources>
 </Application>
