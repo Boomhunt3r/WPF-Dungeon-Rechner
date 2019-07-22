@@ -11,20 +11,11 @@
             <MenuItem Header="File">
                 <MenuItem Header="New" Name="menNew" Click="MenNew_Click"/>
                 <MenuItem Header="Save" Name="menSave"/>
-                <MenuItem Header="Load"/>
+                <MenuItem Header="Load" Name="menLoad"/>
             </MenuItem>
         </Menu>
-        <StackPanel DockPanel.Dock="Left">
-            <Button Width="50" Height="50">
-                <Button.Background>
-                    <ImageBrush ImageSource="{StaticResource stoneImage}"/>
-                </Button.Background>
-            </Button>
-            <Button Width="50" Height="50">
-                <Button.Background>
-                    <ImageBrush ImageSource="{StaticResource woodImage}" />
-                </Button.Background>
-            </Button>
+        <StackPanel DockPanel.Dock="Left" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+            <Image/>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem Name="stbAction" Content=""/>

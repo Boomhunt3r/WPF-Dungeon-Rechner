@@ -27,8 +27,9 @@ namespace GPR5100_S2
         // File->New => Grid geleert werden - Done -
         // File->Save => SaveFileDialog
         // File->Load => OpenFileDialog
-        // Toolbox hinzufügen (Empfehle StackPanel mit Images) - Work in Progress - 
-        // Statusbar soll letzte Aktion enthalten ("Datei xy wurde gespeichert")... - Almost Done -
+        // Toolbox hinzufügen (Empfehle StackPanel mit Images)
+        // Statusbar soll letzte Aktion enthalten ("Datei xy wurde gespeichert")...
+        //** Statusbar KANN eine Progressbar enthalten, welche den Ladestatus angibt (LoadImages async) **/
         // Das Programm darf unter keinen Umständen abstürzen.
         // Es sollen (falls notwendig) klare Fehlermeldungen angezeigt werden (z.B. MessageBox)
         // Im optimalfall können keine Fehler auftreten.
@@ -38,25 +39,22 @@ namespace GPR5100_S2
 
         private List<BitmapSource> bitmapSources;
 
-        public int GridCount = 10;
-
         public MainWindow()
         {
-
             InitializeComponent();
 
             // alle bilder laden
             bitmapSources = LoadImages();
 
             // dynamisch 10 * 10 zellen erstellen
-            for (int i = 0; i < GridCount; ++i)
+            for (int i = 0; i < 10; ++i)
             {
                 sceneGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 sceneGrid.RowDefinitions.Add(new RowDefinition());
             }
 
-            for (int x = 0; x < GridCount; ++x)
-                for (int y = 0; y < GridCount; ++y)
+            for (int x = 0; x < 10; ++x)
+                for (int y = 0; y < 10; ++y)
                 {
                     Image image = new Image();
                     image.Source = bitmapSources.First();
@@ -79,7 +77,7 @@ namespace GPR5100_S2
             List<BitmapSource> bitmapImages = new List<BitmapSource>();
 
             // alle jpegs durchgehen
-            foreach (string file in Directory.GetFiles("./images", "*.png"))
+            foreach (string file in Directory.GetFiles("./images", "*.jpg"))
             {
                 // die datei zum laden
                 using (var stream = File.OpenRead(file))
@@ -102,7 +100,7 @@ namespace GPR5100_S2
             // clear Images in Grid
             sceneGrid.Children.Clear();
 
-            stbAction.Content = "Das Level wurde geleert.";
+            stbAction.Content = "Das Grid wurde geleert.";
         }
     }
 }
