@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:GPR5100_S2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BitmapImage x:Key="test1Image" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/download.jpg" />
+        <ImageBrush x:Key="test1ImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource test1Image}}"/>
+
+        <BitmapImage x:Key="test2Image" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/images.jpg"/>
+        <ImageBrush x:Key="test2ImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource test2Image}}"/>
+
+        <BitmapImage x:Key="test3Image" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/test.jpg"/>
+        <ImageBrush x:Key="test3ImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource test3Image}}"/>
     </Application.Resources>
 </Application>

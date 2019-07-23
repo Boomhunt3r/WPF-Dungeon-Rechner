@@ -102,5 +102,13 @@ namespace GPR5100_S2
 
             stbAction.Content = "Das Grid wurde geleert.";
         }
+
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point p = e.GetPosition(this);
+
+            double x = p.X;
+            double y = p.Y;
+        }
     }
 }

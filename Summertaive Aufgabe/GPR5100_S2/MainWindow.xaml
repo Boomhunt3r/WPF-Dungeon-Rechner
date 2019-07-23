@@ -15,7 +15,11 @@
             </MenuItem>
         </Menu>
         <StackPanel DockPanel.Dock="Left" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+            <Image Source="{Binding Mode=OneWay, Source={StaticResource test1Image}}" Width="50" Height="50"/>
+            <Image Source="{Binding Mode=OneWay, Source={StaticResource test2Image}}" Width="50" Height="50"/>
+            <Image Source="{Binding Mode=OneWay, Source={StaticResource test3Image}}" Width="50" Height="50"/>
             <Image/>
+            <Button Content="Change"/>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem Name="stbAction" Content=""/>
