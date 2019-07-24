@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,19 +26,21 @@ namespace GPR5100_S2
         // Menüleiste
         // File
         // File->New => Grid geleert werden - Done -
-        // File->Save => SaveFileDialog
-        // File->Load => OpenFileDialog
-        // Toolbox hinzufügen (Empfehle StackPanel mit Images)
-        // Statusbar soll letzte Aktion enthalten ("Datei xy wurde gespeichert")...
+        // File->Save => SaveFileDialog - Work in Progress -
+        // File->Load => OpenFileDialog - Work in Progress -
+        // Toolbox hinzufügen (Empfehle StackPanel mit Images) - Almost Done -
+        // Statusbar soll letzte Aktion enthalten ("Datei xy wurde gespeichert")... - Almost Done -
         //** Statusbar KANN eine Progressbar enthalten, welche den Ladestatus angibt (LoadImages async) **/
         // Das Programm darf unter keinen Umständen abstürzen.
         // Es sollen (falls notwendig) klare Fehlermeldungen angezeigt werden (z.B. MessageBox)
         // Im optimalfall können keine Fehler auftreten.
         // Tipp zum Laden:
-        // Grid.GetColumn(image);
-        // Grid.GetRow(image);
+        // Grid.GetColumn(image); - Work in Progress -
+        // Grid.GetRow(image); - Work in Progress -
 
         private List<BitmapSource> bitmapSources;
+
+        private Image sourceImage = new Image();
 
         public MainWindow()
         {
@@ -69,6 +72,17 @@ namespace GPR5100_S2
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             // das bild auf dem image ändern
+            Image test = (Image)sender;
+
+            if(sourceImage.Source == null)
+            {
+                MessageBox.Show("Kein Bild ausgewählt", "Achtung", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                test.Source = sourceImage.Source;
+            }
+
         }
 
         // Muss noch gegen fehler abgesichert werden.
@@ -77,7 +91,7 @@ namespace GPR5100_S2
             List<BitmapSource> bitmapImages = new List<BitmapSource>();
 
             // alle jpegs durchgehen
-            foreach (string file in Directory.GetFiles("./images", "*.jpg"))
+            foreach (string file in Directory.GetFiles("./images", "*.png"))
             {
                 // die datei zum laden
                 using (var stream = File.OpenRead(file))
@@ -103,12 +117,93 @@ namespace GPR5100_S2
             stbAction.Content = "Das Grid wurde geleert.";
         }
 
-        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        private void MenSave_Click(object sender, RoutedEventArgs e)
         {
-            Point p = e.GetPosition(this);
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "Text-Datei|*.txt";
+            saveFile.Title = "Level Speichern";
+            saveFile.ShowDialog();
 
-            double x = p.X;
-            double y = p.Y;
+            try
+            {
+                using (saveFile.OpenFile())
+                {
+                    string filepath = saveFile.FileName;
+
+                    switch (saveFile.FilterIndex)
+                    {
+                        case 1:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception _e)
+            {
+                MessageBox.Show($"{_e}", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void MenLoad_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+        }
+
+        private void Stone_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Stone = new Image();
+
+            Stone = (Image)sender;
+
+            sourceImage.Source = Stone.Source;
+
+            stbAction.Content = "Stein wurde ausgewählt!";
+        }
+
+        private void Grass_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Grass = new Image();
+
+            Grass = (Image)sender;
+
+            sourceImage.Source = Grass.Source;
+
+            stbAction.Content = "Grass wurde ausgewählt!";
+        }
+
+        private void Wood_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Wood = new Image();
+
+            Wood = (Image)sender;
+
+            sourceImage.Source = Wood.Source;
+
+            stbAction.Content = "Holz wurde ausgewählt!";
+        }
+
+        private void Ice_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Ice = new Image();
+
+            Ice = (Image)sender;
+
+            sourceImage.Source = Ice.Source;
+
+            stbAction.Content = "Eis wurde ausgewählt!";
+        }
+
+        private void Plastic_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Plastic = new Image();
+
+            Plastic = (Image)sender;
+
+            sourceImage.Source = Plastic.Source;
+
+            stbAction.Content = "Plastik wurde ausgewählt!";
         }
     }
 }

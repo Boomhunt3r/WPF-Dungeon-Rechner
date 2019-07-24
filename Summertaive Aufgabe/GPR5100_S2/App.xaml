@@ -4,13 +4,25 @@
              xmlns:local="clr-namespace:GPR5100_S2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <BitmapImage x:Key="test1Image" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/download.jpg" />
-        <ImageBrush x:Key="test1ImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource test1Image}}"/>
+        <!-- Stone Image -->
+        <BitmapImage x:Key="stoneImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Stone.png" />
+        <ImageBrush  x:Key="stoneImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource stoneImage}}"/>
 
-        <BitmapImage x:Key="test2Image" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/images.jpg"/>
-        <ImageBrush x:Key="test2ImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource test2Image}}"/>
+        <!-- Grass Image -->
+        <BitmapImage x:Key="grassImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Grass.png"/>
+        <ImageBrush  x:Key="grassImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource grassImage}}"/>
 
-        <BitmapImage x:Key="test3Image" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/test.jpg"/>
-        <ImageBrush x:Key="test3ImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource test3Image}}"/>
+        <!-- Wood Image -->
+        <BitmapImage x:Key="woodImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Wood.png"/>
+        <ImageBrush  x:Key="woodImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource woodImage}}"/>
+
+        <!-- Ice Image -->
+        <BitmapImage x:Key="iceImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Ice.png"/>
+        <ImageBrush  x:Key="iceImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource iceImage}}"/>
+
+        <!-- Plastic Image -->
+        <BitmapImage x:Key="plasticImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Plastic.png"/>
+        <ImageBrush  x:Key="plasticImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource plasticImage}}"/>
+
     </Application.Resources>
 </Application>
