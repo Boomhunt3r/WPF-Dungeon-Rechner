@@ -46,41 +46,30 @@ namespace GPR5100_S2
         {
             InitializeComponent();
 
-            // alle bilder laden
-            bitmapSources = LoadImages();
-
-            // dynamisch 10 * 10 zellen erstellen
-            for (int i = 0; i < 10; ++i)
-            {
-                sceneGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                sceneGrid.RowDefinitions.Add(new RowDefinition());
-            }
-
-            for (int x = 0; x < 10; ++x)
-                for (int y = 0; y < 10; ++y)
-                {
-                    Image image = new Image();
-                    image.Source = bitmapSources.First();
-                    Grid.SetColumn(image, x);
-                    Grid.SetRow(image, y);
-                    sceneGrid.Children.Add(image);
-
-                    image.MouseUp += Image_MouseUp;
-                }
+            CreateGrid();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            // das bild auf dem image ändern
-            Image test = (Image)sender;
+            // Clicked Image from Grid
+            Image gridImage = (Image)sender;
 
-            if(sourceImage.Source == null)
+            // if there is no Source Image yet selected
+            if (sourceImage.Source == null)
             {
+                // Give out an MesageBox with no Image selected
                 MessageBox.Show("Kein Bild ausgewählt", "Achtung", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            // if Image is selected
             else
             {
-                test.Source = sourceImage.Source;
+                // change Source from GridImage to the Selected One
+                gridImage.Source = sourceImage.Source;
             }
 
         }
@@ -90,7 +79,7 @@ namespace GPR5100_S2
         {
             List<BitmapSource> bitmapImages = new List<BitmapSource>();
 
-            // alle jpegs durchgehen
+            // alle pngs durchgehen
             foreach (string file in Directory.GetFiles("./images", "*.png"))
             {
                 // die datei zum laden
@@ -105,6 +94,41 @@ namespace GPR5100_S2
         }
 
         /// <summary>
+        /// Create Grid
+        /// </summary>
+        private void CreateGrid()
+        {
+            //alle Bilder laden
+            bitmapSources = LoadImages();
+
+            // dynamisch 10 * 10 zellen erstellen
+            for (int i = 0; i < 10; ++i)
+            {
+                sceneGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                sceneGrid.RowDefinitions.Add(new RowDefinition());
+            }
+            try
+            {
+                for (int x = 0; x < 10; ++x)
+                    for (int y = 0; y < 10; ++y)
+                    {
+                        Image image = new Image();
+                        image.Source = bitmapSources.First();
+                        Grid.SetColumn(image, x);
+                        Grid.SetRow(image, y);
+                        sceneGrid.Children.Add(image);
+
+                        image.MouseUp += Image_MouseUp;
+                    }
+            }
+            catch (Exception _e)
+            {
+                MessageBox.Show($"{_e}", "Achtung", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+        }
+
+        /// <summary>
         /// New Button Function
         /// </summary>
         /// <param name="sender"></param>
@@ -114,9 +138,16 @@ namespace GPR5100_S2
             // clear Images in Grid
             sceneGrid.Children.Clear();
 
-            stbAction.Content = "Das Grid wurde geleert.";
+            CreateGrid();
+
+            stbAction.Content = "Das Level wurde geleert.";
         }
 
+        /// <summary>
+        /// Save Function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -146,11 +177,21 @@ namespace GPR5100_S2
 
         }
 
+        /// <summary>
+        /// Load Function
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void MenLoad_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
         }
 
+        /// <summary>
+        /// Clicked on the Stone Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void Stone_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Stone = new Image();
@@ -162,6 +203,11 @@ namespace GPR5100_S2
             stbAction.Content = "Stein wurde ausgewählt!";
         }
 
+        /// <summary>
+        /// Clicked on the Grass Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void Grass_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Grass = new Image();
@@ -173,6 +219,11 @@ namespace GPR5100_S2
             stbAction.Content = "Grass wurde ausgewählt!";
         }
 
+        /// <summary>
+        /// Clicked on the Wood Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void Wood_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Wood = new Image();
@@ -184,6 +235,11 @@ namespace GPR5100_S2
             stbAction.Content = "Holz wurde ausgewählt!";
         }
 
+        /// <summary>
+        /// Clicked on the Ice Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void Ice_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Ice = new Image();
@@ -195,6 +251,11 @@ namespace GPR5100_S2
             stbAction.Content = "Eis wurde ausgewählt!";
         }
 
+        /// <summary>
+        /// Clicked on the Plastic Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
         private void Plastic_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Plastic = new Image();
