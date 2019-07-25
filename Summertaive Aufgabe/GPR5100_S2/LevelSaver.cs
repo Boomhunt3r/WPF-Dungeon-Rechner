@@ -58,9 +58,45 @@ namespace GPR5100_S2
             }
         }
 
-        public static void LoadLevel()
+        public static Grid LoadLevel(Grid _grid, List<Image> _images, OpenFileDialog _openFile)
         {
+            Image image = new Image();
 
+            using (Stream stream = File.OpenRead(Path.GetFullPath(_openFile.FileName)))
+            {
+                StreamReader reader = new StreamReader(stream);
+
+                for (int i = 0; i < _grid.Children.Count; ++i)
+                {
+                    image = (Image)_grid.Children[i];
+
+                    if (reader.ReadLine() == "S")
+                    {
+                        image.Source = _images[0].Source;
+                    }
+                    else if (reader.ReadLine() == "G")
+                    {
+                        image.Source = _images[1].Source;
+                    }
+                    else if (reader.ReadLine() == "W")
+                    {
+                        image.Source = _images[2].Source;
+                    }
+                    else if (reader.ReadLine() == "I")
+                    {
+                        image.Source = _images[3].Source;
+                    }
+                    else if (reader.ReadLine() == "P")
+                    {
+                        image.Source = _images[4].Source;
+                    }
+                    else if (reader.ReadLine() == "X")
+                    {
+                        image.Source = _images[5].Source;
+                    }
+                }
+            }
+            return _grid;
         }
     }
 }
