@@ -46,8 +46,11 @@ namespace GPR5100_S2
         {
             InitializeComponent();
 
+<<<<<<< HEAD
             BitmapImage test = new BitmapImage();
 
+=======
+>>>>>>> 21a60efb6c7003b3648d23c49fb22404dad2f767
             CreateGrid();
         }
 
