@@ -10,17 +10,23 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="New" Name="menNew" Click="MenNew_Click"/>
-                <MenuItem Header="Save" Name="menSave"/>
-                <MenuItem Header="Load" Name="menLoad"/>
+                <MenuItem Header="Save" Name="menSave" Click="MenSave_Click"/>
+                <MenuItem Header="Load" Name="menLoad" Click="MenLoad_Click"/>
             </MenuItem>
         </Menu>
         <StackPanel DockPanel.Dock="Left" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+            <Image x:Name="Stone" Source="{Binding Mode=OneWay, Source={StaticResource stoneImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Stone_MouseUp"/>
+            <Image x:Name="Grass" Source="{Binding Mode=OneWay, Source={StaticResource grassImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Grass_MouseUp"/>
+            <Image x:Name="Wood" Source="{Binding Mode=OneWay, Source={StaticResource woodImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Wood_MouseUp"/>
+            <Image x:Name="Ice"  Source="{Binding Mode=OneWay, Source={StaticResource iceImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Ice_MouseUp"/>
+            <Image x:Name="Plastic" Source="{Binding Mode=OneWay, Source={StaticResource plasticImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Plastic_MouseUp"/>
             <Image/>
+
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem Name="stbAction" Content=""/>
         </StatusBar>
-        <Grid x:Name="sceneGrid" DockPanel.Dock="Right">
+        <Grid x:Name="sceneGrid" DockPanel.Dock="Left">
         </Grid>
     </DockPanel>
 </Window>
