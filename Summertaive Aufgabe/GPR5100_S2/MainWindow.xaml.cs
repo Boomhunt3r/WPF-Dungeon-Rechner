@@ -153,45 +153,57 @@ namespace GPR5100_S2
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Filter = "Text-Datei|*.txt";
             saveFile.Title = "Level Speichern";
+            string path = System.IO.Path.GetFullPath("./Level");
+            saveFile.InitialDirectory = path;
             saveFile.ShowDialog();
+
+            List<Image> allImages = new List<Image>();
+            allImages.Add(Stone);
+            allImages.Add(Grass);
+            allImages.Add(Wood);
+            allImages.Add(Ice);
+            allImages.Add(Plastic);
+            allImages.Add(Fill);
 
             try
             {
-                using (saveFile.OpenFile())
-                {
-                    string filepath = saveFile.FileName;
+                string filepath = saveFile.FileName;
 
-                    switch (saveFile.FilterIndex)
-                    {
-                        case 1:
-                            break;
-                        default:
-                            break;
-                    }
+                switch (saveFile.FilterIndex)
+                {
+                    case 1:
+                        LevelSaver.SaveLevel(sceneGrid, allImages, saveFile);
+                        break;
+                    default:
+                        break;
                 }
             }
-            catch (Exception _e)
+            catch (InvalidOperationException _e)
             {
-                MessageBox.Show($"{_e}", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"{_e}", "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            catch (Exception _ex)
+            {
+                MessageBox.Show($"{_ex}", "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
         /// Load Function
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void MenLoad_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+
         }
 
         /// <summary>
         /// Clicked on the Stone Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Stone_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Stone = new Image();
@@ -207,7 +219,7 @@ namespace GPR5100_S2
         /// Clicked on the Grass Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Grass_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Grass = new Image();
@@ -223,7 +235,7 @@ namespace GPR5100_S2
         /// Clicked on the Wood Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Wood_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Wood = new Image();
@@ -239,7 +251,7 @@ namespace GPR5100_S2
         /// Clicked on the Ice Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Ice_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Ice = new Image();
@@ -255,7 +267,7 @@ namespace GPR5100_S2
         /// Clicked on the Plastic Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Plastic_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Plastic = new Image();
@@ -265,6 +277,22 @@ namespace GPR5100_S2
             sourceImage.Source = Plastic.Source;
 
             stbAction.Content = "Plastik wurde ausgewählt!";
+        }
+
+        /// <summary>
+        /// Clicked on the Fill Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e">Mouse Click</param>
+        private void Fill_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Fill = new Image();
+
+            Fill = (Image)sender;
+
+            sourceImage.Source = Fill.Source;
+
+            stbAction.Content = "Fill wurde ausgewählt!";
         }
     }
 }

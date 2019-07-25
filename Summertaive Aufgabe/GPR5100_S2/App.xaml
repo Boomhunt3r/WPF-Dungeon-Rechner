@@ -6,21 +6,20 @@
     <Application.Resources>
         <!-- Stone Image -->
         <BitmapImage x:Key="stoneImage" UriSource="pack://siteoforigin:,,,/Images/Stone.png" />
-        <ImageBrush  x:Key="stoneImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource stoneImage}}"/>
 
         <!-- Grass Image -->
         <BitmapImage x:Key="grassImage" UriSource="pack://siteoforigin:,,,/Images/Grass.png"/>
-        <ImageBrush  x:Key="grassImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource grassImage}}"/>
 
         <!-- Wood Image -->
         <BitmapImage x:Key="woodImage" UriSource="pack://siteoforigin:,,,/Images/Wood.png"/>
-        <ImageBrush  x:Key="woodImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource woodImage}}"/>
 
         <!-- Ice Image -->
         <BitmapImage x:Key="iceImage" UriSource="pack://siteoforigin:,,,/Images/Ice.png"/>
-        <ImageBrush  x:Key="iceImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource iceImage}}"/>
 
         <!-- Plastic Image -->
         <BitmapImage x:Key="plasticImage" UriSource="pack://siteoforigin:,,,/Images/Plastic.png"/>
+        
+        <!-- Fill Image -->
+        <BitmapImage x:Key="fillImage" UriSource="pack://siteoforigin:,,,/Images/Fill.png"/>
     </Application.Resources>
 </Application>

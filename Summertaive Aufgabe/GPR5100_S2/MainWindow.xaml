@@ -20,7 +20,7 @@
             <Image x:Name="Wood" Source="{Binding Mode=OneWay, Source={StaticResource woodImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Wood_MouseUp"/>
             <Image x:Name="Ice"  Source="{Binding Mode=OneWay, Source={StaticResource iceImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Ice_MouseUp"/>
             <Image x:Name="Plastic" Source="{Binding Mode=OneWay, Source={StaticResource plasticImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Plastic_MouseUp"/>
-            <Image/>
+            <Image x:Name="Fill" Source="{Binding Mode=OneWay, Source={StaticResource fillImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Fill_MouseUp"/>
 
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom">
