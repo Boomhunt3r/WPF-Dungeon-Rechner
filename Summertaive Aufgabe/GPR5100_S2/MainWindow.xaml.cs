@@ -28,7 +28,7 @@ namespace GPR5100_S2
         // File->New => Grid geleert werden - Done -
         // File->Save => SaveFileDialog - Work in Progress -
         // File->Load => OpenFileDialog - Work in Progress -
-        // Toolbox hinzufügen (Empfehle StackPanel mit Images) - Almost Done -
+        // Toolbox hinzufügen (Empfehle StackPanel mit Images) - Done -
         // Statusbar soll letzte Aktion enthalten ("Datei xy wurde gespeichert")... - Almost Done -
         //** Statusbar KANN eine Progressbar enthalten, welche den Ladestatus angibt (LoadImages async) **/
         // Das Programm darf unter keinen Umständen abstürzen.
@@ -46,11 +46,6 @@ namespace GPR5100_S2
         {
             InitializeComponent();
 
-<<<<<<< HEAD
-            BitmapImage test = new BitmapImage();
-
-=======
->>>>>>> 21a60efb6c7003b3648d23c49fb22404dad2f767
             CreateGrid();
         }
 
