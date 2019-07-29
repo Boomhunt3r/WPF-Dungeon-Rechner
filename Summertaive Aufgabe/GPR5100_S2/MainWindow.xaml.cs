@@ -26,9 +26,9 @@ namespace GPR5100_S2
         // Menüleiste
         // File
         // File->New => Grid geleert werden - Done -
-        // File->Save => SaveFileDialog - Work in Progress -
+        // File->Save => SaveFileDialog - Done -
         // File->Load => OpenFileDialog - Work in Progress -
-        // Toolbox hinzufügen (Empfehle StackPanel mit Images) - Almost Done -
+        // Toolbox hinzufügen (Empfehle StackPanel mit Images) - Done -
         // Statusbar soll letzte Aktion enthalten ("Datei xy wurde gespeichert")... - Almost Done -
         //** Statusbar KANN eine Progressbar enthalten, welche den Ladestatus angibt (LoadImages async) **/
         // Das Programm darf unter keinen Umständen abstürzen.
@@ -42,36 +42,20 @@ namespace GPR5100_S2
 
         private Image sourceImage = new Image();
 
+        private List<Image> allImages = new List<Image>();
+        
         public MainWindow()
         {
             InitializeComponent();
 
+            allImages.Add(Stone);
+            allImages.Add(Grass);
+            allImages.Add(Wood);
+            allImages.Add(Ice);
+            allImages.Add(Plastic);
+            allImages.Add(Fill);
+
             CreateGrid();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender">Image</param>
-        /// <param name="e"></param>
-        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            // Clicked Image from Grid
-            Image gridImage = (Image)sender;
-
-            // if there is no Source Image yet selected
-            if (sourceImage.Source == null)
-            {
-                // Give out an MesageBox with no Image selected
-                MessageBox.Show("Kein Bild ausgewählt", "Achtung", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            // if Image is selected
-            else
-            {
-                // change Source from GridImage to the Selected One
-                gridImage.Source = sourceImage.Source;
-            }
-
         }
 
         // Muss noch gegen fehler abgesichert werden.
@@ -128,6 +112,31 @@ namespace GPR5100_S2
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e"></param>
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            // Clicked Image from Grid
+            Image gridImage = (Image)sender;
+
+            // if there is no Source Image yet selected
+            if (sourceImage.Source == null)
+            {
+                // Give out an MesageBox with no Image selected
+                MessageBox.Show("Kein Bild ausgewählt", "Achtung", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            // if Image is selected
+            else
+            {
+                // change Source from GridImage to the Selected One
+                gridImage.Source = sourceImage.Source;
+            }
+
+        }
+
+        /// <summary>
         /// New Button Function
         /// </summary>
         /// <param name="sender"></param>
@@ -152,45 +161,69 @@ namespace GPR5100_S2
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Filter = "Text-Datei|*.txt";
             saveFile.Title = "Level Speichern";
+            saveFile.InitialDirectory = System.IO.Path.GetFullPath("./Level");
             saveFile.ShowDialog();
+
+            
 
             try
             {
-                using (saveFile.OpenFile())
-                {
-                    string filepath = saveFile.FileName;
+                string filepath = saveFile.FileName;
 
-                    switch (saveFile.FilterIndex)
-                    {
-                        case 1:
-                            break;
-                        default:
-                            break;
-                    }
+                switch (saveFile.FilterIndex)
+                {
+                    case 1:
+                        LevelSaver.SaveLevel(sceneGrid, allImages, saveFile);
+
+                        stbAction.Content = $"Das Level wurde unter dem Namen {saveFile.FileName} gespeichert.";
+                        break;
+                    default:
+                        break;
                 }
             }
-            catch (Exception _e)
+            catch (InvalidOperationException _e)
             {
-                MessageBox.Show($"{_e}", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(_e.Message, "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            catch (Exception _ex)
+            {
+                MessageBox.Show(_ex.Message, "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
         /// Load Function
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void MenLoad_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Text-Datei|*.txt";
+            openFile.InitialDirectory = System.IO.Path.GetFullPath("./Level");
+            openFile.ShowDialog();
+
+            try
+            {
+                sceneGrid = LevelSaver.LoadLevel(sceneGrid, allImages, openFile);
+
+                stbAction.Content = $"Das Level {openFile.FileName} wurde geöffnet.";
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Die Datei konne nicht gefunden werden.", "Fehler beim Laden", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception _e)
+            {
+                MessageBox.Show(_e.Message, "Fehler beim Laden", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         /// <summary>
         /// Clicked on the Stone Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Stone_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Stone = new Image();
@@ -206,7 +239,7 @@ namespace GPR5100_S2
         /// Clicked on the Grass Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Grass_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Grass = new Image();
@@ -222,7 +255,7 @@ namespace GPR5100_S2
         /// Clicked on the Wood Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Wood_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Wood = new Image();
@@ -238,7 +271,7 @@ namespace GPR5100_S2
         /// Clicked on the Ice Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Ice_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Ice = new Image();
@@ -254,7 +287,7 @@ namespace GPR5100_S2
         /// Clicked on the Plastic Image in Toolbox
         /// </summary>
         /// <param name="sender">Image</param>
-        /// <param name="e"></param>
+        /// <param name="e">Mouse Click</param>
         private void Plastic_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Image Plastic = new Image();
@@ -264,6 +297,22 @@ namespace GPR5100_S2
             sourceImage.Source = Plastic.Source;
 
             stbAction.Content = "Plastik wurde ausgewählt!";
+        }
+
+        /// <summary>
+        /// Clicked on the Fill Image in Toolbox
+        /// </summary>
+        /// <param name="sender">Image</param>
+        /// <param name="e">Mouse Click</param>
+        private void Fill_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Image Fill = new Image();
+
+            Fill = (Image)sender;
+
+            sourceImage.Source = Fill.Source;
+
+            stbAction.Content = "Fill wurde ausgewählt!";
         }
     }
 }

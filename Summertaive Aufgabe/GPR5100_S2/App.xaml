@@ -5,24 +5,21 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!-- Stone Image -->
-        <BitmapImage x:Key="stoneImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Stone.png" />
-        <ImageBrush  x:Key="stoneImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource stoneImage}}"/>
+        <BitmapImage x:Key="stoneImage" UriSource="pack://siteoforigin:,,,/Images/Stone.png" />
 
         <!-- Grass Image -->
-        <BitmapImage x:Key="grassImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Grass.png"/>
-        <ImageBrush  x:Key="grassImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource grassImage}}"/>
+        <BitmapImage x:Key="grassImage" UriSource="pack://siteoforigin:,,,/Images/Grass.png"/>
 
         <!-- Wood Image -->
-        <BitmapImage x:Key="woodImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Wood.png"/>
-        <ImageBrush  x:Key="woodImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource woodImage}}"/>
+        <BitmapImage x:Key="woodImage" UriSource="pack://siteoforigin:,,,/Images/Wood.png"/>
 
         <!-- Ice Image -->
-        <BitmapImage x:Key="iceImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Ice.png"/>
-        <ImageBrush  x:Key="iceImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource iceImage}}"/>
+        <BitmapImage x:Key="iceImage" UriSource="pack://siteoforigin:,,,/Images/Ice.png"/>
 
         <!-- Plastic Image -->
-        <BitmapImage x:Key="plasticImage" UriSource="D:\Privates\Dings drinne rein\WPF\Summertaive Aufgabe\Editor\Images/Plastic.png"/>
-        <ImageBrush  x:Key="plasticImageBrush" ImageSource="{Binding Mode=OneWay, Source={StaticResource plasticImage}}"/>
-
+        <BitmapImage x:Key="plasticImage" UriSource="pack://siteoforigin:,,,/Images/Plastic.png"/>
+        
+        <!-- Fill Image -->
+        <BitmapImage x:Key="fillImage" UriSource="pack://siteoforigin:,,,/Images/Fill.png"/>
     </Application.Resources>
 </Application>
