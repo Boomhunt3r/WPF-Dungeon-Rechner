@@ -143,10 +143,7 @@ namespace GPR5100_S2
         /// <param name="e"></param>
         private void MenNew_Click(object sender, RoutedEventArgs e)
         {
-            // clear Images in Grid
-            sceneGrid.Children.Clear();
-
-            CreateGrid();
+            Level.ClearGrid(sceneGrid, allImages);
 
             stbAction.Content = "Das Level wurde geleert.";
         }
@@ -173,7 +170,7 @@ namespace GPR5100_S2
                 switch (saveFile.FilterIndex)
                 {
                     case 1:
-                        LevelSaver.SaveLevel(sceneGrid, allImages, saveFile);
+                        Level.SaveLevel(sceneGrid, allImages, saveFile);
 
                         stbAction.Content = $"Das Level wurde unter dem Namen {saveFile.FileName} gespeichert.";
                         break;
@@ -205,7 +202,7 @@ namespace GPR5100_S2
 
             try
             {
-                sceneGrid = LevelSaver.LoadLevel(sceneGrid, allImages, openFile);
+                sceneGrid = Level.LoadLevel(sceneGrid, allImages, openFile);
 
                 stbAction.Content = $"Das Level {openFile.FileName} wurde geöffnet.";
             }
