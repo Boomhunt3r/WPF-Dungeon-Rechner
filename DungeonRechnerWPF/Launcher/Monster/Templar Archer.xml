@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Monster>
+  <Name>Templar Archer</Name>
+  <Health>50</Health>
+  <Defense>15</Defense>
+  <Armor>5</Armor>
+</Monster>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Monster>
+  <Name>Knight Captain</Name>
+  <Health>50</Health>
+  <Defense>12</Defense>
+  <Armor>10</Armor>
+</Monster>

@@ -8,13 +8,14 @@
         Title="MainWindow" Height="450" Width="800">
     <DockPanel LastChildFill="False">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="New" Name="menNew" Click="MenNew_Click"/>
-                <MenuItem Header="Save" Name="menSave" Click="MenSave_Click"/>
-                <MenuItem Header="Load" Name="menLoad" Click="MenLoad_Click"/>
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Name="menNew" Click="MenNew_Click"/>
+                <MenuItem Header="_Save" Name="menSave" Click="MenSave_Click"/>
+                <MenuItem Header="_Load" Name="menLoad" Click="MenLoad_Click"/>
             </MenuItem>
         </Menu>
-        <StackPanel DockPanel.Dock="Left" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+        <StackPanel DockPanel.Dock="Left" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
+            <Label Content="Toolbox" FontSize="15"/>
             <Image x:Name="Stone" Source="{Binding Mode=OneWay, Source={StaticResource stoneImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Stone_MouseUp"/>
             <Image x:Name="Grass" Source="{Binding Mode=OneWay, Source={StaticResource grassImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Grass_MouseUp"/>
             <Image x:Name="Wood" Source="{Binding Mode=OneWay, Source={StaticResource woodImage}}" Width="51.2" Height="51.2" MouseLeftButtonUp="Wood_MouseUp"/>

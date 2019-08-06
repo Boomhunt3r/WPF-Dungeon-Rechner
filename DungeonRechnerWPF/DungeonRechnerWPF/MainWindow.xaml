@@ -6,7 +6,87 @@
         xmlns:local="clr-namespace:DungeonRechnerWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="_New"/>
+            <MenuItem Header="_Monster">
+                <MenuItem Header="Darkspawn">
+                    <MenuItem Header="Genlock"/>
+                    <MenuItem Header="Genlock Alpha"/>
+                    <MenuItem Header="Genlock Emissary"/>
+                    <MenuItem Header="Hurlock"/>
+                    <MenuItem Header="Hurlock Alpha"/>
+                    <MenuItem Header="Hurlock Emissary"/>
+                    <MenuItem Header="Ogre"/>
+                    <MenuItem Header="Shriek"/>
+                    <MenuItem Header="Archdemon" Background="Red"/>
+                </MenuItem>
+                <MenuItem Header="Demons">
+                    <MenuItem Header="Desire Deamon"/>
+                    <MenuItem Header="Rage Deamon"/>
+                    <MenuItem Header="Pride Deamon"/>
+                    <MenuItem Header="Abom_ination"/>
+                </MenuItem>
+                <MenuItem Header="Dragons">
+                    <MenuItem Header="High Dragon"/>
+                    <MenuItem Header="Wyvern"/>
+                    <MenuItem Header="Drake"/>
+                    <MenuItem Header="Dragonling"/>
+                </MenuItem>
+                <MenuItem Header="Animals">
+                    <MenuItem Header="Black Bear"/>
+                    <MenuItem Header="Great Bear"/>
+                    <MenuItem Header="Bronto"/>
+                    <MenuItem Header="Cave Beetle Swarm"/>
+                    <MenuItem Header="Dog"/>
+                    <MenuItem Header="Mabari War Dog"/>
+                    <MenuItem Header="Falcon"/>
+                    <MenuItem Header="Halla"/>
+                    <MenuItem Header="Draft Horse"/>
+                    <MenuItem Header="Mule"/>
+                    <MenuItem Header="Riding Horse"/>
+                    <MenuItem Header="Great Lion"/>
+                    <MenuItem Header="Gian Spider"/>
+                </MenuItem>
+                <MenuItem Header="Red Lyrium">
+                    <MenuItem Header="Knight-Captain"/>
+                    <MenuItem Header="Templar"/>
+                    <MenuItem Header="Templar-Archer"/>
+                </MenuItem>
+                <MenuItem Header="People">
+                    <MenuItem Header="Apostates"/>
+                    <MenuItem Header="Blood Mage"/>
+                    <MenuItem Header="Brigands"/>
+                    <MenuItem Header="Avvar Hunter"/>
+                    <MenuItem Header="Chasind Stalker"/>
+                    <MenuItem Header="Dalish Raider"/>
+                    <MenuItem Header="Tal-Vashoth Mercenary"/>
+                    <MenuItem Header="Saaebas"/>
+                </MenuItem>
+                <MenuItem Header="AFT">
+                    <MenuItem Header="Lucia" Background="#FFCED007"/>
+                    <MenuItem Header="Xiomara"/>
+                    <MenuItem Header="Astherion"/>
+                    <MenuItem Header="Imesaar" Background="#FF89006D"/>
+                    <MenuItem Header="Sparrow" Background="#FF00D6FF"/>
+                    <MenuItem Header="Haleir" Background="#FF239705"/>
+                    <MenuItem Header="Gorim(R.I.P)" Background="#FF480505" Foreground="White"/>
+                </MenuItem>
+                <MenuItem Header="Inquisition">
+                    <MenuItem Header="Azrael"/>
+                    <MenuItem Header="Dorian"/>
+                    <MenuItem Header="Cassandra"/>
+                    <MenuItem Header="Vivienne"/>
+                    <MenuItem Header="Cole"/>
+                    <MenuItem Header="Iron Bull"/>
+                    <MenuItem Header="Sara"/>
+                    <MenuItem Header="Vivienne"/>
+                    <MenuItem Header="Blackwall"/>
+                    <MenuItem Header="Leliana"/>
+                    <MenuItem Header="Cullen"/>
+                    <MenuItem Header="Solas"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+    </StackPanel>
 </Window>

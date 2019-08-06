@@ -1,16 +1,18 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace GPR5100_S2
 {
     public class Level
     {
+        /// <summary>
+        /// Save Level Function
+        /// </summary>
+        /// <param name="_grid">Grid to Save</param>
+        /// <param name="_images">List with Images</param>
+        /// <param name="_saveFile">Path to Save File</param>
         public static void SaveLevel(Grid _grid, List<Image> _images, SaveFileDialog _saveFile)
         {
             using (Stream stream = File.OpenWrite(System.IO.Path.GetFullPath(_saveFile.FileName)))
@@ -51,13 +53,20 @@ namespace GPR5100_S2
                     // Fill
                     else if (image.Source == _images[5].Source)
                     {
-                        writer.Write('X');
+                        writer.Write('0');
                     }
                 }
                 writer.Flush();
             }
         }
 
+        /// <summary>
+        /// Load Level Function 
+        /// </summary>
+        /// <param name="_grid">Grid to Load Images into</param>
+        /// <param name="_images">List with all Images</param>
+        /// <param name="_openFile">Path from file to open</param>
+        /// <returns>Grid</returns>
         public static Grid LoadLevel(Grid _grid, List<Image> _images, OpenFileDialog _openFile)
         {
             Image image = new Image();
@@ -103,7 +112,12 @@ namespace GPR5100_S2
             return _grid;
         }
         
-        public static void ClearGrid(Grid _grid, List<Image> _images)
+        /// <summary>
+        /// Clear Level Function
+        /// </summary>
+        /// <param name="_grid">Grid to clear</param>
+        /// <param name="_images">List with all Images</param>
+        public static void ClearGrid(Grid _grid,Image _image)
         {
             Image image = new Image();
 
@@ -111,7 +125,7 @@ namespace GPR5100_S2
             {
                 image = (Image)_grid.Children[i];
 
-                image.Source = _images[5].Source;
+                image.Source = _image.Source;
             }
         }
     }

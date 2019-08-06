@@ -18,7 +18,7 @@
 
         <!-- Plastic Image -->
         <BitmapImage x:Key="plasticImage" UriSource="pack://siteoforigin:,,,/Images/Plastic.png"/>
-        
+
         <!-- Fill Image -->
         <BitmapImage x:Key="fillImage" UriSource="pack://siteoforigin:,,,/Images/Fill.png"/>
     </Application.Resources>
